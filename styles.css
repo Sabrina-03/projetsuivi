@@ -103,163 +103,85 @@ body {
     width: 100%;
 }
 
-/* === PAGE CONNEXION (index.php) === */
-body.login-page {
-    background-color: #f4debe;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-}
+/* ============ VERSION MOBILE RESPONSIVE ============= */
 
-.login-container {
-    background-color: white;
-    padding: 30px;
-    border-radius: 50px;
-    box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
-    width: 600px;
-    max-width: 50%;
-}
+/* 1) Smartphones & petites tablettes  (≤ 768 px) */
+@media (max-width: 768px) {
 
-.login-title {
-    text-align: center;
-    margin-bottom: 80px;
-    color: hsl(29, 81%, 47%);
-    font-size: 30px;
-}
+  /* Corps : on évite le 100 vh qui crée parfois un “jump” sur mobile */
+  .index-body {
+    flex-direction: column;      /* empile logo + formulaire */
+    height: auto;
+    min-height: 100vh;
+    padding: 20px 10px;
+  }
 
-label {
-    display: block;
-    margin-top: 20px;
-    font-weight: bold;
-}
-
-input[type="email"],
-input[type="password"] {
-    width: 100%;
-    padding: 15px;
-    margin-top: 10px;
-    border: 1px solid #e96d26;
-    border-radius: 8px;
-    font-size: 24px;
-}
-
-.password-wrapper {
-    position: relative;
-    font-size: 30px;
-}
-
-.toggle-password {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    cursor: pointer;
-    user-select: none;
-}
-
-input[type="submit"] {
-    background-color: #e68f0d;
-    color: white;
-    border: none;
-    padding: 15px;
-    margin-top: 30px;
-    width: 100%;
-    border-radius: 8px;
-    font-size: 16px;
-    transition: background-color 0.3s;
-}
-
-input[type="submit"]:hover {
-    background-color: #e60000;
-}
-
-.title {
-    position: absolute;
-    top: 50px;
+  /* ---- Titre principal ---- */
+  .index-title-container {
+    top: 20px;                   /* plus près du bord */
     left: 50%;
     transform: translateX(-50%);
-    font-size: 50px;
-    color: #e17b1b;
-    font-family: Arial Black, sans-serif;
-    font-weight: bold;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-    letter-spacing: 2px;
+    width: 90%;                  /* limite la largeur */
+    text-align: center;
+    white-space: nowrap;         /* force le titre sur une seule ligne */
+  }
+  .index-title {
+    font-size: 34px;             /* était 50 px */
+    letter-spacing: 1px;
+  }
+
+  /* ---- Boîte de connexion ---- */
+  .index-login-container {
+    width: 100%;                 /* pleine largeur */
+    max-width: 100%;
+    padding: 25px;
+    border-radius: 30px;
+    margin-top: 100px;           /* espace sous le titre */
+    box-shadow: 0 0 30px rgba(0,0,0,.08);
+  }
+  .index-login-title {
+    font-size: 24px;
+    margin-bottom: 40px;
+  }
+
+  /* ---- Labels & champs ---- */
+  .index-label-email,
+  .index-label-password {
+    font-size: 14px;
+    margin-top: 16px;
+  }
+  .index-input-email,
+  .index-input-password {
+    font-size: 18px;
+    padding: 12px;
+  }
+
+  /* ---- Icône œil / mot de passe ---- */
+  .index-password-wrapper   { font-size: 24px; }
+  .index-toggle-password    { right: 12px; }
+
+  /* ---- Bouton envoyer ---- */
+  .index-submit-button {
+    font-size: 18px;
+    padding: 12px;
+  }
 }
 
-.login-container > * {
-    margin-bottom: 20px;
-}
+/* 2) Très petits téléphones  (≤ 480 px) */
+@media (max-width: 480px) {
 
-/* ================= VERSION MOBILE ================= */
-@media screen and (max-width: 768px) {
-    .index-title {
-        font-size: 30px;
-        text-align: center;
-        padding: 0 10px;
-    }
+  .index-title { font-size: 28px; }
 
-    .index-login-container,
-    .login-container {
-        width: 90%;
-        padding: 20px;
-        border-radius: 30px;
-        box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
-    }
+  .index-login-container {
+    padding: 20px;
+    border-radius: 20px;
+    margin-top: 80px;
+  }
 
-    .index-login-title,
-    .login-title {
-        font-size: 24px;
-        margin-bottom: 40px;
-    }
+  .index-input-email,
+  .index-input-password { font-size: 16px; }
 
-    input[type="email"],
-    input[type="password"],
-    .index-input-email,
-    .index-input-password {
-        font-size: 18px;
-        padding: 12px;
-    }
-
-    input[type="submit"],
-    .index-submit-button {
-        font-size: 16px;
-        padding: 12px;
-    }
-
-    .title {
-        font-size: 30px;
-        top: 20px;
-        padding: 0 10px;
-        text-align: center;
-    }
-
-    .index-title-container {
-        top: 20px;
-        width: 100%;
-        left: 0;
-        transform: none;
-        text-align: center;
-    }
-
-    .index-body,
-    body.login-page {
-        padding: 10px;
-        height: auto;
-        min-height: 100vh;
-        flex-direction: column;
-    }
-
-    .password-wrapper,
-    .index-password-wrapper {
-        font-size: 20px;
-    }
-
-    .toggle-password,
-    .index-toggle-password {
-        right: 8px;
-    }
+  .index-submit-button  { font-size: 16px; }
 }
 
 
@@ -267,9 +189,12 @@ input[type="submit"]:hover {
 
 /* Conteneur principal */
 .gestion-collaborateurs {
-  max-width: 1000%;
+  max-width: 1500%;
   margin: 20px auto;
   padding: 10px;
+  height: 100%;
+  width: 100%;
+  
 }
 
 /* Barre latérale */
@@ -295,10 +220,9 @@ input[type="submit"]:hover {
 /* Titre principal */
 .gestion-collaborateurs h1 {
     text-align: center;
-    font-size: 2rem;
-    margin-bottom: 20px;
-    color: #333;
-
+    font-size: 30px;
+    margin: 60px 0 15px; /* décale vers le bas et espace dessous */
+    color: #0a0a09;
 }
 
 /* Section client */
@@ -311,28 +235,25 @@ input[type="submit"]:hover {
     color: #555;
 }
 
-/* Année et bouton Ajouter */
-.gestion-collaborateurs .form-ajout-collab {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  margin-bottom: 20px;
+
+
+.gestion-collaborateurs .btn {
+    position: absolute;             /* fixé par rapport à la fenêtre */
+    top: 140px;                   /* espace depuis le haut */
+    right: 20px;                 /* espace depuis la droite */
+    background-color: #090909;
+    color: #fff;
+    padding: 10px 50px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    z-index: 1000;               /* s'assurer qu'il est au-dessus */
 }
 
-.gestion-collaborateurs .btn-ajouter {
-  background-color: #ab1616;
-  padding: 6px 12px;
-  font-size: 0.9rem;
-  border-radius: 4px;
-  color: #fff;
-  text-decoration: none;
-  border: none;
-  cursor: pointer;
-}
-
-.gestion-collaborateurs .btn-ajouter:hover {
+.gestion-collaborateurs .btn:hover {
   background-color: #ed9d35;
+
 }
 
 
@@ -341,50 +262,112 @@ input[type="submit"]:hover {
   min-width: 150px; /* ou plus si tu as beaucoup de colonnes */
   width: 100%;
   border-collapse: collapse;
+  
 }
 .gestion-collaborateurs table th,
 .gestion-collaborateurs table td {
     padding: 8px 12px;
     border: 1px solid #ee7010;
     text-align: center;
+    font-size: 12px;
 }
 .gestion-collaborateurs table th {
     background-color: #f08b42;
     color: #fff;
     font-weight: bold;
+     
 }
+
 
 .gestion-collaborateurs .ligne-masquee {
     opacity: 0.5;
+    text-decoration: none;
+    
 }
+@media (max-width: 768px) {
+  /* Conteneur principal */
+  .gestion-collaborateurs {
+    padding: 5px;
+    margin: 0;
+  }
 
-/* Responsive */
-@media screen and (max-width: 768px) {
+  /* Barre latérale */
   .gestion-collaborateurs .sidebar {
     position: relative;
     width: 100%;
     height: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    box-shadow: none;
+    padding: 20px;
+    margin-bottom: 20px;
   }
-  .gestion-collaborateurs .content {
-    margin-left: 0;
-    padding: 1rem;
+
+   .gestion-collaborateurs .btn {
+     position: fixed;
+    top: 190px;
+    right: 10px;
+    padding: 6px 8px;
+    font-size: 14px;
+    width: 50%;
+     display: inline-block;
   }
+
+  .gestion-collaborateurs h1 {
+ font-size: 24px;
+    margin: 50px 0 10px;
+    text-align: center;
+    margin-top: 70px;
+
+  }
+
+  /* Contenu principal */
+  .gestion-collaborateurs.content {
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Section client */
+  .gestion-collaborateurs .client-section h2 {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+
+  /* Tableau */
   .gestion-collaborateurs table {
-    width: 100%;
+    font-size: 10px;
     display: block;
     overflow-x: auto;
-    font-size: 0.8rem;
+    white-space: nowrap;
   }
-  .gestion-collaborateurs .btn {
-    align-self: flex-end;
-    margin: 10px 0;
+
+  .gestion-collaborateurs table th,
+  .gestion-collaborateurs table td {
+    padding: 6px 8px;
+  }
+
+  /* Ligne masquée : inchangé car visuel */
+  .gestion-collaborateurs .ligne-masquee {
+    opacity: 0.5;
+  }
+
+  /* Formulaire : simplification */
+  .gestion-collaborateurs form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 0 10px;
+  }
+
+  .gestion-collaborateurs form label {
+    font-size: 14px;
+  }
+
+  .gestion-collaborateurs select,
+  .gestion-collaborateurs input[type="checkbox"] {
+    font-size: 14px;
   }
 }
-
-
 /* === FORMULAIRES (ajouter/modifier collaborateur) === */
 body.page-modifier {
   font-family: Arial, sans-serif;
@@ -403,18 +386,24 @@ body.page-modifier {
 /* Structure principale */
 .main-container {
   max-width: 100%;
-  padding: 10px 40px;
+  padding: 1% 40%;
   box-sizing: border-box;
 }
 
 /* Formulaire structuré en grille de 5 colonnes */
 .ajout-form .form-columns {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 20px 15px; /* espacement lignes / colonnes */
-  width: 100%;
-  box-sizing: border-box;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0% 1%;
+    width: 100%;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    
 }
+
 
 /* Groupes de champ */
 .ajout-form .form-columns div {
@@ -433,10 +422,10 @@ body.page-modifier {
 .ajout-form input,
 .ajout-form select {
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid #e67e22;
   border-radius: 6px;
   font-size: 14px;
-  width: 100%;
+  width: 150px;
   box-sizing: border-box;
 }
 
@@ -461,10 +450,16 @@ body.page-modifier {
 }
 
 /* === VERSION MOBILE (≤768px) === */
+/* === VERSION MOBILE (≤768px) === */
 @media screen and (max-width: 768px) {
-  body.page-modifier {
-    padding: 10px;
-    overflow-x: hidden; /* autorise scroll vertical */
+  .page-modifier {
+    height: auto; /* important */
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-x: hidden; /* uniquement horizontal */
   }
 
   .main-container {
@@ -476,28 +471,32 @@ body.page-modifier {
     margin-bottom: 15px;
   }
 
-  /* Grille 2 colonnes avec espacement réduit */
-  .ajout-form .form-columns {
-    grid-template-columns: repeat(2, minmax(120px, 1fr)); /* colonnes plus petites */
-    gap: 10px 8px; /* moins d'espacement */
+  .ajout-form {
+    gap: 15px;
   }
 
-  .ajout-form label {
-    font-size: 13px;
+  /* Grille en 2 colonnes pour s'adapter */
+  .form-columns {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(100px, 1fr));
+    row-gap: 15px;
+    column-gap: 10px;
   }
 
   .ajout-form input,
   .ajout-form select {
-    font-size: 13px;
-    padding: 6px 8px;  /* moins de padding */
-    max-width: 100%;   /* s'adapte à la colonne */
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+    box-sizing: border-box;
   }
 
-  .ajout-form button[type="submit"] {
-    width: 100%;
+  button[type="submit"],
+  .btn-retour {
+    padding: 10px 30px;
     font-size: 14px;
-    padding: 10px;
-    margin-top: 20px;
+    margin: 15px auto;
+    width: 100%;
   }
 
   .error-message {
@@ -507,123 +506,176 @@ body.page-modifier {
 }
 
 
-/* ==================== AJOUTER COLLABORATEUR ==================== */
 
 
-.page-ajouter {
-  height: 100vh;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  padding: 20px;
+/* ========== RESET DE BASE ========== */
+* {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
-    overflow: hidden;
 }
 
-.main-container {
+html, body {
   width: 100%;
-  max-width: 100%;
-   
+  height: 100%;
+  font-family: Arial, sans-serif;
+  overflow-x: hidden;
 }
 
+/* === STYLES POUR PAGE AJOUTER COLLABORATEUR === */
+body.page-ajouter {
+  font-family: Arial, sans-serif;
+   overflow: hidden;
+  margin: 0;
+  padding: 20px;
+}
+
+/* Conteneur principal centré */
+.main-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* Section gauche */
+.left-section  {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
+}
+
+
+/* Titre */
 .ajout-title {
-  margin-bottom: 20px;
-  font-size: 24px;
   text-align: center;
-  color: #d28213;
- 
+  margin-bottom: 30px;
+  font-size: 24px;
+  color: #e66c0a;
 }
 
+/* Message d'erreur */
+.error-message {
+  color: #cc0000;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* === Formulaire === */
 .ajout-form {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  
 }
 
-/* Grille en 5 colonnes */
+/* Grille de champs */
 .form-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-   row-gap: 0px;  
-  width: 100%;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0% 1%;
+    width: 100%;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
 }
 
-/* Style pour chaque champ */
+/* Groupe de champs */
 .form-group {
   display: flex;
   flex-direction: column;
+  width: 150px;
 }
 
 .form-group label {
+  margin-bottom: 6px;
   font-weight: bold;
-  margin-bottom: 5px;
+  font-size: 14px;
+  color: #333;
 }
 
 .form-group input,
 .form-group select {
   padding: 10px;
+  border: 1px solid #e67e22;
+  border-radius: 6px;
   font-size: 14px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  box-sizing: border-box;
 }
 
-/* Bouton afficher */
-button[type="submit"] {
-  display: block;              /* rendre le bouton un bloc */
-  margin: 20px auto;           /* centre horizontalement */
-  padding: 12px 50px;
+/* Bouton Ajouter */
+.ajout-form button[type="submit"] {
+  align-self: center;
+  background-color: #e67e22;
+  color: #fff;
+  padding: 12px 30px;
   font-size: 16px;
-  background-color: #ff8c00;
   border: none;
-  color: white;
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
-  width: fit-content;
-  text-align: center;
+  margin-top: 20px;
 }
 
+.ajout-form button[type="submit"]:hover {
+  background-color: #cf6b1f;
+}
 
-
-/* Champs d'entrée */
-input[type="text"],
-input[type="date"],
-input[type="number"],
-select {
-    width: 200px;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    box-sizing: border-box;
+/* Bouton retour */
+.btn-retour {
+  display: block;
+  margin: 15px auto 0;
+  text-align: center;
+  color: #e67e22;
+  text-decoration: none;
+  font-weight: bold;
  
 }
 
+.btn-retour:hover {
+  text-decoration: underline;
+}
 
-/* Message d'erreur */
-.error-message {
-    color: red;
-    font-weight: bold;
-    margin-bottom: 15px;
-    text-align: center;
+
+/* ========== BOUTONS ========== */
+button[type="submit"],
+.btn-retour {
+  padding: 12px 40px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+button[type="submit"] {
+  background-color: #0a0a0a;
+  color: white;
 }
 
 .btn-retour {
- 
-  padding: 12px 50px;
-  font-size: 16px;
-  background-color: #0a0a0a;
-  border: none;
-  color: white;
-  border-radius: 8px;
-  cursor: pointer;
-  width: fit-content;
-  text-align: center;
-  text-decoration: none;    /* enlève le soulignement */
+  background-color: #000000;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
 }
 
 .btn-retour:hover {
   background-color: #db8412;
+  color: white;
 }
 
+/* ========== MESSAGES ========== */
+.error-message {
+  color: red;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 15px;
+}
 
 /* === VERSION MOBILE (≤768px) === */
 @media screen and (max-width: 768px) {
@@ -656,7 +708,17 @@ select {
     row-gap: 15px;
     column-gap: 10px;
   }
-
+.ajout-form button[type="submit"] {
+  align-self: center;
+  background-color: #e67e22;
+  color: #fff;
+  padding: 12px 30px;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 20px;
+}
   /* Chaque champ prend 100% de la colonne */
   .form-group input,
   .form-group select {
@@ -666,7 +728,7 @@ select {
   }
 
   /* Réduit les marges du bouton */
-  button[type="submit"],
+  
   .btn-retour {
     padding: 10px 30px;
     font-size: 14px;
@@ -682,60 +744,43 @@ select {
 
  
 }
+/* ==================== HEADER & NAVBAR ==================== */
 
-
-body, html {
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden; /* empêche scroll horizontal */
-}
-
+/* ========== NAVBAR FIXE EN HAUT ========== */
 .navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 60px;
-    width: 100%;
     background-color: #f47e1d;
+    color: white;
+    padding: 0 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: fixed;
+    top: 0;
+    width:100%;
+    height: 60px;
     z-index: 1000;
-    padding: 0 20px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    font-size: 16px;
-    overflow: hidden;
-    transform: translateZ(0); /* pour meilleure stabilité au zoom */
 }
 
-.navbar-left {
-    display: flex;
-    align-items: center;
+.navbar-logo {
+    height: 65px;
 }
 
- .navbar-logo {
-  height: 100px;
-  width: auto;
-  margin: 0;
-  padding: 0;
-  display: block;
-}
+/* CENTRE DES LIENS */
 .navbar-center {
     display: flex;
     gap: 20px;
-    flex-grow: 1;
-    justify-content: center;
     align-items: center;
-    white-space: nowrap;
+    justify-content: center;
+    flex-grow: 1;
 }
 
 .nav-link {
-    text-decoration: none;
     color: white;
+    text-decoration: none;
     font-weight: bold;
-    padding: 8px 12px;
-    border-radius: 4px;
+    padding: 10px 15px;
+    border-radius: 5px;
     transition: background-color 0.3s;
 }
 
@@ -743,116 +788,136 @@ body, html {
     background-color: #d35400;
 }
 
+/* DROITE */
+.navbar-right {
+    margin-right: 20px;
+}
 
+.logout-btn {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 5px;
+    background-color: transparent;
+    transition: background-color 0.3s;
+}
 
+.logout-btn:hover {
+    background-color: #d35400;
+
+}
 /* Footer */
 .footer {
     background-color: #000000bc;
     color: white;
     padding: 10px 20px;
     text-align: center;
-    position: fixed;
-    bottom: 0;
+    position:fixed; /* Garde le footer en bas */
+    bottom: 0px; /* Positionne le footer en bas de la fenêtre */
     width: 100%;
-    height: 50px;
-    z-index: 999;
-    box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.2);
+    margin-top: 435px;
+}
+/* ====== BOUTON MENU (mobile uniquement) ====== */
+.menu-toggle {
+    display: none;
+    font-size: 26px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
 }
 
+/* ====== MENU MOBILE LATERAL ====== */
+.mobile-menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 100px;
+    width: 250px;
+    height: 70%;
+    background-color: #0a0a0a;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3);
+    padding-top: 60px;
+    flex-direction: column;
+    align-items: center;
+    transition: right 0.3s ease-in-out;
+    z-index: 999;
+}
+
+.mobile-menu.active {
+    right: 0;
+    display: flex;
+}
+
+.mobile-menu .nav-link {
+    width: 100%;
+    text-align: center;
+    padding: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 768px) {
+    .desktop-menu {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .navbar {
+        justify-content: space-between;
+    }
+}
 
 /* ==================== PAGE ACCUEIL ==================== */
 .accueil-page {
-    background-image: url('images/image_4.png');
-    background-size: cover;
+    background-image: url('images/image_8.jfif');
+    background-size: 100%; /* dézoome l'image (moins que 100%) */
     background-position: center;
     background-repeat: no-repeat;
     height: 100vh;
-    padding-top: 60px; /* évite que le contenu passe sous le header */
+    padding-top: 40px; /* évite que le contenu passe sous le header */
     margin: 0;
     overflow: hidden;
     font-family: Arial, sans-serif;
 }
 
+
 .accueil-page h1 {
     font-size: 48px;
-    color: #f47e1d;
+    color: #ffffff;
     text-align: center;
-    margin-top: 150px;
+    margin-top: 200px;
     font-weight: bold;
 
 }
 
 @media screen and (max-width: 768px) {
-    .navbar {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        height: 60px;
-        padding: 0 8px;
-        
-    }
-
- .navbar-logo {
-  height: 35px;
-  width: auto;
-  margin: 0;
-  padding: 0;
-  display: block;
-}
-    .navbar-center {
-        display: flex;
-        flex-grow: 1;
-        justify-content: center;
-        align-items: center;
-        gap: 5px;
-        flex-wrap: nowrap; /* Empêche de passer à la ligne */
-        overflow: hidden;   /* Cache tout débordement */
-    }
-
-    .nav-link  {
-        font-size:8px;
-        padding:0px 0px;
-        white-space: nowrap; /* Garde le texte sur une seule ligne */
-    }
-
-  
-    .accueil-page h1 {
-        font-size: 26px;
-        margin-top: 0px;
-        padding: 0 10px;
-        text-align: center;
-    }
-
-    .footer {
-        font-size: 14px;
-        padding: 10px;
-        height: auto;
-    }
-.accueil-page {
-    position: relative;
-    height: 100vh; /* pleine hauteur de l'écran */
-    width: 100vw;
-    background-image: url('images/image_4.png'); /* ton image */
-    background-size: cover;      /* couvre toute la surface */
-    background-position: center; /* centrée */
+  .accueil-page {
+    background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
+    height: 100vh;
+    padding-top: 60px;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* place le h1 en haut */
+    justify-content: center;
     align-items: center;
-    padding-top: 80px; /* espace en haut pour le h1 */
-    box-sizing: border-box;
-}
-
-/* Titre en haut */
-.accueil-page h1 {
-    font-size: 26px;
-    margin: 0;
-    padding: 0 10px;
     text-align: center;
-    color: #f47e1d;
-}
+  }
 
+  .accueil-page h1 {
+    font-size: 18px; /* plus petit pour mobile */
+    margin-top: -150px;
+    padding: 0 15px;
+    color: #ffffff;
+    font-weight: bold;
+    line-height: 1.4;
+  }
 }
 
 
@@ -875,9 +940,9 @@ body, html {
     margin-bottom: 10px;
 }
 
-/* Bouton "Afficher" */
+/* Bouton "Ajouter" */
 .suivi-commandes button.ajouter-commande {
-    background-color: #f1812c;
+    background-color: #000000;
     color: white;
     font-size: 14px;
     padding: 4px 8px;
@@ -923,7 +988,7 @@ body, html {
     text-align: left;
    margin: 20px;
     font-size: 16px;
-    color: #e67d14;
+    color: #000000;
     text-align:center;
     margin-top: 10px; 
 }
@@ -950,15 +1015,16 @@ body, html {
 .suivi-commandes th,
 .suivi-commandes td {
     width: 20%;
-    border: 1px solid #ccc;
+    border: 1px solid  #ee7010;;
     padding: 0;
     text-align: center;
+    font-size: 12px;
 }
 
 .suivi-commandes th {
-    background-color: #f4913b;
-    font-size: 12px;
+    background-color:  #f08b42;
     font-weight: bold;
+     color: #fff;
 }
 
 .suivi-commandes td {
@@ -976,12 +1042,14 @@ body, html {
 .suivi-commandes button[type="submit"]:last-of-type {
     background-color: #060606;
     color: white;
-    margin-top: 10px;
+    margin-top: 30px;
     padding: 10px 12px;
     font-size: 14px;
     border-radius: 30px;
     width: 200px;
     text-align: center;
+    
+  
 }
 
 .suivi-commandes button[type="submit"]:last-of-type:hover {
@@ -989,17 +1057,18 @@ body, html {
 }
 
 .suivi-commandes .annee-en-cours {
-    position: fixed;
-    top: 100px;
-    right: 20px;
+    position: absolute;
+    top: 120px;
+    right: 30px;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 16px;
     background-color: #fff;
-    padding: 10px 12px;
+    padding: 10px 10px;
     border: 1px solid #ccc;
     border-radius: 10px;
     box-shadow: 0 0 5px rgba(0,0,0,0.1);
     z-index: 1000;
+    text-align: center;
 }
 .suivi-commandes .header-filtres label,
 .suivi-commandes .header-filtres select {
@@ -1012,16 +1081,15 @@ body, html {
 }
 /* Bouton "Masquer" pour chaque ligne de commande */
 .suivi-commandes .btn-masquer  {
-    background-color: #030303;
-    color: white;
+     color: #0066cc;
     border: none;
     padding: 4px 10px;
     border-radius: 4px;
     font-size: 12px;
-    font-weight: bold;
+  
     cursor: pointer;
     transition: background-color 0.2s ease;
-     background-color: #111111;
+
 }
 
 
@@ -1033,255 +1101,207 @@ body, html {
 
 
 
-.suivi-commandes .btn-masquer:hover {
-    background-color: #c0392b;
-}
-
-/* === VERSION MOBILE (≤768px) POUR .suivi-commandes === */
-@media screen and (max-width: 768px) {
+@media only screen and (max-width: 768px) {
   .suivi-commandes {
-    max-width: 100vw;
-    overflow-x: hidden;   /* Empêche défilement horizontal */
-    box-sizing: border-box;
+    width: 100%;
+    margin: 0;
     padding: 10px;
+    overflow-x: auto;
   }
 
-  /* Header filtres : colonne verticale pour gagner de la place */
-  .suivi-commandes .header-filtres {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    font-size: 16px;
-    gap: 8px;
-    margin-bottom: 15px;
 
-  }
 
-  /* Bouton Afficher plus petit */
-  .suivi-commandes .btn-afficher {
-    width: 100%;
-    max-width: 150px;
-    height: 36px;
+  .suivi-commandes h2.titre-client {
     font-size: 14px;
-    padding: 6px 0;
-  }
-
-  .suivi-commandes .btn-afficher:hover {
-    background-color: #020202;
-  }
-
-  /* Select plus large */
-  .suivi-commandes select {
-    width: 100%;
-    font-size: 14px;
-    padding: 6px 8px;
-    border-radius: 4px;
-    border: 1px solid #aaa;
-    box-sizing: border-box;
-  }
-
-  /* Titre principal */
-  .suivi-commandes h2 {
-    font-size: 20px;
-    margin: 50px 0 10px;
-    color: #0a0a09;
-    text-align: center;
-    padding: 0 10px;
-    word-wrap: break-word;
+    margin: 10px 0;
   }
 
   /* Sous-titres */
   .suivi-commandes h3 {
-    font-size: 12px;
-    margin-top: 8px;
-    color: #090909;
+    font-size: 13px;
+    margin-top: 10px;
     text-align: left;
-    margin-left: 0;
   }
 
-  .suivi-commandes h2.titre-client {
-    font-size: 12px;
-    color: #e67d14;
-    text-align: center;
-    margin: 10px 0 20px;
+ 
+
+  /* Bouton "Ajouter une commande" */
+  .suivi-commandes button.ajouter-commande {
+    width: 50%;
+    font-size: 14px;
+    margin: 10px 10px;
+    padding: 5px;
+    height: 30px;
   }
 
-  /* Champs de formulaire réduits */
-  .suivi-commandes input[type="text"],
-  .suivi-commandes input[type="number"] {
-    width: 80px;
-    font-size: 12px;
-    padding: 4px 6px;
-    border-radius: 4px;
-  }
-
-  /* Tableaux: layout adaptatif */
+  /* Tableau */
   .suivi-commandes table {
-    width: 100%;
-    table-layout: auto; /* Pour éviter colonnes fixes */
-    word-wrap: break-word;
+    display: block;
+    overflow-x: auto;
     font-size: 12px;
-    border-collapse: collapse;
   }
 
   .suivi-commandes th,
   .suivi-commandes td {
-    padding: 1px 1px;
-    border: 1px solid #ccc;
-    text-align: center;
-    word-break: break-word;
-    min-width: 50px;
-  }
-
-  .suivi-commandes th {
-    background-color: #f4913b;
-    font-weight: bold;
-  }
-
-  .suivi-commandes td {
     font-size: 10px;
+    padding: 4px;
+    min-width: 120px;
   }
 
-  .suivi-commandes td.negatif {
-    color: red;
-    font-weight: bold;
-  }
-
-  /* Bouton Enregistrer plus petit, responsive */
-  .suivi-commandes button[type="submit"]:last-of-type {
+  /* Inputs dans tableau */
+  .suivi-commandes input[type="text"],
+  .suivi-commandes input[type="number"] {
     width: 100%;
-    max-width: 200px;
-    font-size: 14px;
-    padding: 10px 0;
-    margin: 15px auto 0 auto;
-    border-radius: 25px;
-    background-color: #060606;
-  }
-
-  .suivi-commandes button[type="submit"]:last-of-type:hover {
-    background-color: #e18a10;
-  }
-
-  /* Positionnement fixe désactivé pour éviter chevauchement */
-  .suivi-commandes .annee-en-cours {
-    position: static;
-    margin: 10px 0;
-    font-size: 16px;
-    padding: 8px 10px;
-    border-radius: 8px;
-    box-shadow: none;
-    text-align: center;
-    background-color: #fff;
-  }
-
-  /* Header filtres label & select full width */
-  .suivi-commandes .header-filtres label,
-  .suivi-commandes .header-filtres select {
-    width: 100%;
-    margin: 0;
-    padding: 6px 10px;
-    box-sizing: border-box;
-  }
-
-  /* Bouton "Ajouter une commande" */
-.suivi-commandes button.ajouter-commande {
-    background-color: #f1812c;
-    color: white;
-    font-size: 14px;
-    padding: 4px 8px;
-    margin-top: 5px;
-    border-radius: 4px;
-    border: none;
-    cursor: pointer;
-    width: 250px;
-}
-
-  .suivi-commandes button.ajouter-commande:hover {
-    background-color: #d83a3a;
-  }
-
-  /* Bouton suppression réduit */
-  .suivi-commandes button.delete-btn {
-    padding: 1px 1px;
-    font-size: 11px;
-    border-radius:1px;
-  }
-
-  .suivi-commandes button.delete-btn:hover {
-    background-color: #c1817a;
-  }
-
-  /* Ligne suppression : texte centré et marges */
-  .suivi-commandes .suppression-ligne td {
-    background: #ffecec;
-    border-top: 1px solid #ccc;
-    padding: 6px 4px;
     font-size: 12px;
   }
+
+  /* Bouton "Masquer" */
+  .suivi-commandes .btn-masquer {
+    font-size: 12px;
+    width: 100%;
+    padding: 6px;
+    margin-top: 5px;
+  }
+
+  /* Bouton "Enregistrer" */
+  .suivi-commandes button[type="submit"]:last-of-type {
+    width: 50%;
+    font-size: 14px;
+    padding: 10px;
+    margin-top: 20px;
+  }
+/* Titre principal corrigé */
+.suivi-commandes h2 {
+  font-size: 24px;
+  margin: 10px ;
+  text-align: center;
+  line-height: 1.2;
+  display: block;
+ margin-top:70px;
 }
+
+/* Réduction bloc "Année en cours" */
+  .suivi-commandes .annee-en-cours {
+    font-size: 12px;
+    padding: 5px 5px;
+    margin: 10px 0;
+    border-radius: 6px;
+    white-space: nowrap;
+    width: auto;
+    max-width: 100%;
+    width: 20%;
+    position: absolute;
+  }
+
+/* Filtre + checkbox */
+.suivi-commandes .header-filtres {
+  font-size: 14px;
+  padding: 0;
+  gap: 5px;
+}
+
+.suivi-commandes .header-filtres label,
+.suivi-commandes .header-filtres select {
+  width: 100%;
+  font-size: 14px;
+  padding: 6px;
+  box-sizing: border-box;
+}
+
+/* Checkbox bien alignée */
+.suivi-commandes .header-filtres input[type="checkbox"] {
+  transform: scale(1.2);
+  margin-right: 6px;
+}
+
+}
+
 
 /* === STYLES POUR SUIVI DEVIS === */
 
 /* Conteneur principal */
 .page-devis .container {
-  max-width: 1200px;
-  margin: 20px auto;
-  padding: 0 15px;
+  max-width: 100%;
+  margin: 10px auto;
+  padding: 1px 1px;
 }
 
-/* En-tête et bouton Ajouter */
-.page-devis header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 20px;
-}
-.page-devis header h1 {
-   text-align: center;
-    font-size: 30px;
-    margin-bottom: 120px;
-    margin: 50px;
-    padding: 10px;
+/* En-tête + mise en haut */
+.page-devis {
+  margin-top: 30px; /* petit espace depuis le haut */
 }
 
+/* Titre */
+.page-devis h1 {
+  font-size: 24px;
+  margin: 10px auto;
+  text-align: center;
+  line-height: 1.2;
+  margin-top: 70px;
+}
+
+/* Bouton Ajouter */
 .page-devis .btn {
-  display: block;
-    width:20%;
-    padding: 10px ;
-    margin-top: 10px;
-    background-color: #090909;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    text-decoration: none;
+  position: fixed;
+  top: 100px;
+  right: 20px;
+  background-color: #000000;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  z-index: 1000;
 }
 .page-devis .btn:hover {
   background-color: #b8580d;
 }
 
 /* Checkbox Afficher masqués */
-.page-devis header label {
+.page-devis label.afficher {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #030303;
+  gap: 8px;
+  user-select: none;
+}
+
+.page-devis input.afficher {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: #007bff;
+  margin-right: 6px;
+}
+
+.page-devis label {
   display: flex;
   align-items: center;
   font-size: 0.9rem;
   color: #333;
 }
-.page-devis header label input[type="checkbox"] {
+.page-devis label input[type="checkbox"] {
   margin-right: 6px;
 }
 
 /* === Tableau des devis === */
 #devisTable {
-  width: 100%;
+ width: 100%;
   border-collapse: collapse;
   font-size: 0.9rem;
+  margin-top: 20px;
 }
+
 #devisTable th,
 #devisTable td {
   padding: 10px;
   border: 1px solid #ee7010;
   text-align: center;
+  font-size: 12px;
 }
 #devisTable th {
   background-color: #f08b42;
@@ -1289,12 +1309,6 @@ body, html {
 }
 #devisTable tr.ligne-masquee {
   opacity: 0.5;
-}
-
-/* Cellules éditables (non utilisées ici mais conservées) */
-#devisTable td.editable {
-  background-color: #fffbe6;
-  cursor: text;
 }
 
 /* Input date dans tableau */
@@ -1323,6 +1337,7 @@ body, html {
   display: block;
 }
 
+
 /* Actions (Modifier/Masquer/Afficher) */
 #devisTable td a {
   color: #0066cc;
@@ -1332,15 +1347,71 @@ body, html {
 #devisTable td a:hover {
   text-decoration: underline;
 }
+.page-devis .full-width-table {
+  width: 100vw; /* 100% de la largeur de la fenêtre */
+  margin: 0;
+  padding: 0;
+}
 
+/* === VERSION MOBILE POUR SUIVI DEVIS === */
+/* ======== VERSION MOBILE (≤ 768 px) ======== */
+@media (max-width: 768px) {
 
+  /* Conteneur : on enlève la largeur maxi et les marges */
+  .page-devis .container {
+    max-width: 100%;
+    padding: 0 5px;
+    margin: 0;
+  }
+
+  /* Titre un peu plus compact */
+  .page-devis h1 {
+    font-size: 20px;
+    margin-top: 60px;     /* ajuster au besoin */
+  }
+
+  /* Bouton fixe un peu plus petit */
+  .page-devis .btn {
+    top:20%;
+    right: 15px;
+    padding: 8px 15px;
+    font-size: 14px;
+  }
+
+  /* Tableau : pleine largeur + scroll horizontal */
+  #devisTable {
+    width: 100%;
+    display: block;                 /* permet overflow */
+    overflow-x: auto;               /* barre de défilement mobile */
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;            /* évite le “wrap” des cellules */
+  }
+
+  /* Cellules plus compactes */
+  #devisTable th,
+  #devisTable td {
+    padding: 8px;
+    font-size: 11px;
+  }
+
+  /* Option : rétrécir les labels/checkbox */
+  .page-devis label.afficher {
+    font-size: 16px;
+  }
+  .page-devis input.afficher {
+    width: 16px;
+    height: 16px;
+  }
+}
 
 
 
 /* ==================== AJOUTER DEVIS ==================== */
 
+
+
 .page-ajouter-devis {
-  height: 100vh;
+  height: 100%;
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -1358,7 +1429,7 @@ body, html {
   margin-bottom: 20px;
   font-size: 24px;
   text-align: center;
-  color: #080807;
+  color: #d28213;
 }
 
 .page-ajouter-devis .ajout-form {
@@ -1419,11 +1490,11 @@ body, html {
 
 /* Bouton retour */
 .page-ajouter-devis .btn-retour {
-  display: block;
+  display: flex;
   margin: 0 auto;
   padding: 12px 50px;
   font-size: 16px;
-  background-color: #0a0a0a;
+  background-color: #000000;
   border: none;
   color: white;
   border-radius: 8px;
@@ -1431,8 +1502,85 @@ body, html {
   width: fit-content;
   text-align: center;
   text-decoration: none;
+  justify-content: center;
+  align-items: center
 }
 
 .page-ajouter-devis .btn-retour:hover {
   background-color: #db8412;
+}
+
+/* === VERSION MOBILE (≤768px) === */
+@media screen and (max-width: 768px) {
+  .page-ajouter-devis {
+    height: auto !important; /* remplace 100vh */
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-x: hidden; /* évite scroll horizontal */
+  }
+
+  .page-ajouter-devis .main-container {
+    width: 100%;
+    padding: 0 10px;
+  }
+
+  .page-ajouter-devis .ajout-title {
+    font-size: 20px;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+
+  .page-ajouter-devis .ajout-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .page-ajouter-devis .form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 15px;
+    column-gap: 10px;
+    width: 100%;
+  }
+
+  .page-ajouter-devis .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .page-ajouter-devis .form-group label {
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+
+  .page-ajouter-devis .form-group input,
+  .page-ajouter-devis .form-group select {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+    box-sizing: border-box;
+  }
+
+  .page-ajouter-devis .btn-actions {
+    grid-column: span 2;
+    display: inline-flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 15px;
+   
+  }
+
+  .page-ajouter-devis button[type="submit"],
+  .page-ajouter-devis .btn-retour {
+ 
+    padding: 10px 150px;
+    font-size: 14px;
+    margin: 0px ;
+    width: auto;
+  }
+
 }
