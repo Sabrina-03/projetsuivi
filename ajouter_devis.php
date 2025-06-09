@@ -1,11 +1,15 @@
 <?php
 // ajouter_devis.php
+// On se connecte à la base de données
 require_once 'database.php';
 session_start();
 
-// Traitement du formulaire
+// Message d'erreur ou de confirmation
 $message = '';
+
+// Si on envoie le formulaire (via POST)
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // On récupère les données du formulaire
     $data = [
         'numero_devis' => $_POST['numero_devis'],
         'revision'     => $_POST['revision'],
@@ -19,10 +23,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'temps'        => $_POST['temps'],
     ];
 
+    // On construit la requête SQL avec des noms de colonnes et des placeholders
     $sql = "INSERT INTO devis (" . implode(',', array_keys($data)) . ") VALUES (:" . implode(', :', array_keys($data)) . ")";
+
+    // On prépare la requête pour éviter les injections SQL
     $stmt = $pdo->prepare($sql);
+
+    // On exécute la requête avec les données du formulaire
     $stmt->execute($data);
 
+    // On redirige vers la page de suivi des devis
     header('Location: suivi_devis.php');
     exit;
 }
@@ -33,12 +43,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <title>Ajouter un Devis</title>
-    <link rel="stylesheet" href="styles.css?v=11">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css?v=16">
 </head>
 <body class="page-ajouter-devis">
   <div class="main-container">
     <h1 class="ajout-title">➕ Ajouter un Devis</h1>
 
+    <!-- Formulaire pour ajouter un devis -->
     <form method="POST" action="ajouter_devis.php" class="ajout-form">
       <div class="form-grid">
         <div class="form-group">
@@ -81,10 +93,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           <label>Temps (h)</label>
           <input name="temps" type="number" step="0.1">
         </div>
-      </div>
 
-      <button type="submit">✅ Enregistrer</button>
-      <a href="suivi_devis.php" class="btn-retour">⬅ Retour</a>
+        <!-- Boutons pour valider ou revenir -->
+        <div class="btn-actions">
+          <button type="submit">Enregistrer</button>
+          <a href="suivi_devis.php" class="btn-retour">Retour</a>
+        </div>
+
+      </div>
     </form>
   </div>
 </body>
